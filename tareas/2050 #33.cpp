@@ -14,7 +14,7 @@ CalcularAnios(){
 	cout<<"Digite su edad: ";
 	cin>>edad;
 	
-	cout<<"Digite año actual: ";
+	cout<<"Digite aÃ±o actual: ";
 	cin>>anio;
 	
 	anioB=2050-(anio-edad);
