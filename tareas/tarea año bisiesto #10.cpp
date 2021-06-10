@@ -5,7 +5,7 @@
 using namespace std;
 int main(){
 	int fecha;
-	cout<<"Ingrese el año a comprobar:  ";
+	cout<<"Ingrese el aÃ±o a comprobar:  ";
 	cin>>fecha;
 	
 	if(fecha%4!=0 || (fecha%100==0&&fecha%400!=0))
