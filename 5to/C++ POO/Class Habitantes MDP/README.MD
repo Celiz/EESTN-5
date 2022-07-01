@@ -8,5 +8,7 @@ Se solicita:
     * Listar todas las personas con CiudadResidencia :Mar del Plata
     * Listar todas las personas que sean mayores de 18 años.
     * Listar todas las personas cuyo nombre Termine con la letra a.
+
+
     * Listar todas las personas que sean mayores de 18 años.
     * Listar todas las personas.
