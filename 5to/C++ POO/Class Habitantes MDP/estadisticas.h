@@ -5,22 +5,24 @@ using namespace std;
  
 class CParte{
 public:
-    CParte(string nom, string gen, int ed, int al, string nac, string ciu);
-  CParte();
+    CParte(string nom, char gen, int ed, int al, string nac, string ciu);
+  	CParte();
    ~CParte();
     string getNombre();
-    string getGenero();
+    char getGenero();
     int getEdad();
     int getAltura();
     string getNacionalidad();
     string getCiudad();
     
-    string letraA();
+    bool letraA();
+    bool habitaMDP();
+    bool mayor18();
    
     
-private:
+	private:
     string nombre;
-    string genero;
+    char genero;
     int edad;
     int altura;
     string nacionalidad;
@@ -29,8 +31,7 @@ private:
 };
  
  
-CParte::CParte(string n, string g, int e, int h, string na, string c) {
- 
+CParte::CParte(string n, char g, int e, int h, string na, string c) {
     nombre = n;
     genero = g;
     edad = e;
@@ -38,36 +39,31 @@ CParte::CParte(string n, string g, int e, int h, string na, string c) {
  	nacionalidad = na;
  	ciudad = c;
 }
+
+CParte::CParte(){
+	
+}
  
  
 CParte::~CParte() {
  
     cout <<"\nBorrando datos ... \n";
- 
 }
  
 string CParte::getNombre(){
  
     return nombre;
- 
 }
  
- 
-CParte::CParte(){
- 
-}
-
   
-string CParte::getGenero(){
+char CParte::getGenero(){
  
     return genero;
- 
 }
  
 int CParte::getEdad(){
  
     return edad;
- 
 }
 
 int CParte::getAltura(){
@@ -85,11 +81,20 @@ string CParte::getCiudad(){
 	return ciudad;
 }
 
+bool CParte::habitaMDP() { 
+//Comprueba si la ciudad es mar del plata 
+ return (ciudad == "mar del plata" || ciudad==  "Mar del Plata") ? true : false; 
+} 
 
+bool CParte::letraA(){
+//comprueba si la utlima letra del nombre es igual a la letra 'a' ||fun fact(.back() solo funciona en c++ 11, usar -std=c++11 en opciones del compilador)
+	return (nombre.back() == 'a') ? true:false;
+}
 
-		
-
-
+bool CParte::mayor18(){
+//comprueba si la edad es mayor a 18 	
+	return (edad >= 18) ? true:false;
+}
 
 	
 #endif	/* CParte_H */
