@@ -36,7 +36,7 @@ $empleado = new Empleado($_POST['name'], $_POST['hours'], $_POST['salary']);
 echo "Nombre: " . $empleado->getNombre() . "<br>";
 echo "Horas: " . $empleado->getHoras() . "<br>";
 echo "Sueldo por hora: " . $empleado->getSueldoH() . "<br>";
-echo "Sueldo total: " . $empleado->calcularSueldo() . "<br>";
+echo "Sueldo total de " . $empleado->getNombre() . ": " . $empleado->calcularSueldo() . "<br>";
 ?>
 </body>
 </html>
