@@ -32,11 +32,11 @@ class Rectangulo{
 
 
 }
-$empleado = new Rectangulo($_POST['largo'], $_POST['ancho']);
-echo "Largo: " . $empleado->getLargo() . "<br>";
-echo "Ancho: " . $empleado->getAncho() . "<br>";
-echo "Perimetro: " . $empleado->getPerimetro() . "<br>";
-echo "Area: " . $empleado->getArea() . "<br>";
+$rectangulo = new Rectangulo($_POST['largo'], $_POST['ancho']);
+echo "Largo: " . $rectangulo->getLargo() . "<br>";
+echo "Ancho: " . $rectangulo->getAncho() . "<br>";
+echo "Perimetro: " . $rectangulo->getPerimetro() . "<br>";
+echo "Area: " . $rectangulo->getArea() . "<br>";
 ?>
 </body>
 </html>
