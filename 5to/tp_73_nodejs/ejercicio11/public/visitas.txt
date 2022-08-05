@@ -1,0 +1,6 @@
+nombre:diego<br>
+               comentarios:que tal va.<hr>nombre:ana<br>
+               comentarios:Todo bien por estos lares.<hr>nombre:hernan<br>
+               comentarios:me gusta el sitio.<hr>nombre:diego<br>
+               comentarios:que tal<hr>nombre:pipo<br>
+               comentarios:que que<hr>
