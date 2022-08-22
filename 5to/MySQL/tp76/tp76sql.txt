@@ -1,0 +1,91 @@
+
+1) CREATE DATABASE Examen
+    CHARACTER SET DEFAULT
+    COLLATE DEFAULT;
+
+   CREATE TABLE clientes (
+    id_clientes        int NOT NULL PRIMARY KEY,
+    nombre_clientes    varchar(30),
+    apellido_cliente   string,
+    fechanac_cliente   date,
+    peso_cliente       float,
+    altura_cliente     float,
+    domicilio_cliente  varchar(30),
+    codigo_postal      int,
+    movil01_cliente    int,
+    movil02_cliente    int,
+    email_cliente      string
+  ) ENGINE = InnoDB;
+ 
+   CREATE TABLE clientes (
+    id_clientes        int NOT NULL PRIMARY KEY,
+    nombre_cliente     varchar(30) NOT NULL,
+    apellido_cliente   varchar(30) NOT NULL,
+    fechanac_cliente   date NOT NULL,
+    peso_cliente       varchar(30) NOT NULL,
+    altura_cliente     float NOT NULL;
+    domicilio_cliente  varchar(30) NOT NULL,
+    codigo_postal      int NOT NULL,
+    movil01_cliente    bigint NOT NULL;
+    movil02_cliente    bigint NOT NULL,
+    email_cliente      varchar(30) NOT NULL
+  ) ENGINE = InnoDB;
+   
+   INSERT INTO clientes (id_clientes, nombre_cliente, apellido_cliente, fechanac_cliente, peso_cliente, altura_cliente, domicilio_cliente, codigo_postal, movil01_cliente, movil02_cliente, email_cliente) VALUES
+  (35, 'juan', 'mercado', '1964-02-02', '89,60', '1,77', 'Av Independencia 720', 7600, 2236166744, 2236166745, 'mercadoqgmail.com'),
+  (23, 'jorge', 'solisa', '1982-01-01', '100,00', '1,80', 'Av. Colon 4444', 7600, 22351666666, 22351666667, 'sol@gmail.com'),
+  (3, 'javier', 'fernandez', '1975-09-02', '90,00', '1,77', 'Av. Paso 100', 7600, 2235444444, 2235444445, 'javier@gmail.com'),
+  (2, 'jorge', 'solis', '1945-10-01', '78,20', '1,80', 'Almafuerte 321', 8000, 2291614593, 2291614593, 'j@hotmail.com'),
+  (1, 'lucas', 'forchino', '1979-01-24', '95,50', '1,60', 'jujuy 1234', 7600, 2236121212, 0, 'lucas@gmail.com');
+
+2)a)SELECT 
+  `clientes`.`id_clientes`,
+  `clientes`.`nombre_cliente`,
+  `clientes`.`apellido_cliente`,
+  `clientes`.`fechanac_cliente`,
+  `clientes`.`peso_cliente`,
+  `clientes`.`altura_cliente`,
+  `clientes`.`domicilio_cliente`,
+  `clientes`.`codigo_postal`,
+  `clientes`.`movil01_cliente`,
+  `clientes`.`movil02_cliente`,
+  `clientes`.`email_cliente`
+FROM
+  `clientes`
+WHERE
+  `clientes`.`peso_cliente` >= 90 and `clientes`.`altura_cliente` >= 1.78
+  
+b)SELECT 
+  `clientes`.`id_clientes`,
+  `clientes`.`nombre_cliente`,
+  `clientes`.`apellido_cliente`,
+  `clientes`.`fechanac_cliente`,
+  `clientes`.`peso_cliente`,
+  `clientes`.`altura_cliente`,
+  `clientes`.`domicilio_cliente`,
+  `clientes`.`codigo_postal`,
+  `clientes`.`movil01_cliente`,
+  `clientes`.`movil02_cliente`,
+  `clientes`.`email_cliente`
+  FROM
+  `clientes`
+  WHERE
+  `clientes`.`codigo_postal` != 7600 and  `clientes`.`email_cliente` LIKE '%hotmail%'
+
+c)SELECT AVG(`clientes`.`altura_cliente`) AS promedio FROM clientes;
+
+d)SELECT MAX(`clientes`.`peso_cliente`) AS mayor peso FROM clientes;
+
+e)SELECT MIN(`clientes`.`edad_cliente`) AS menor_edad FROM clientes;
+
+3)a)UPDATE `clientes`
+    SET   `clientes`.`fechanac_cliente` ='1972/04/04'
+    WHERE  `clientes`.`apellido_cliente` ='Mercado';
+
+b)UPDATE `clientes`
+  SET   `clientes`.`movil02_cliente` ='223445545'
+  WHERE  `clientes`.`apellido_cliente` ='Forchino';
+
+c)UPDATE `clientes`
+  SET   `clientes`.`altura_cliente` ='1.80'
+  WHERE  `clientes`.`apellido_cliente` ='Fernandez';
