@@ -1,0 +1,98 @@
+1)
+
+CREATE DATABASE tp78
+CHARACTER SET DEFAULT
+COLLATE DEFAULT;
+
+CREATE TABLE store (
+  id        int,
+  profile   int,
+  name      varchar(30),
+  lat       int,
+  lng       int,
+  id_rubro  int
+) ENGINE = InnoDB;
+
+INSERT INTO store (id, profile, name, lat, lng, id_rubro) VALUES
+  (1236707570, 1, 'Banco Provincia', -37.999319, -57.546547, 1),
+  (288366501, 1, 'Banco Nacion', -37.999671, -57.546848, 1),
+  (1236940209, 0, 'atm', -37.998675, -57.552592, 0),
+  (285071699, 0, 'Astor', -38.000826, -57.542858, 1),
+  (1236711896, 0, 'AGB', -37.999269, -57.548446, 3),
+  (5, 0, 'AGB', -37.999269, -57.548446, 3),
+  (4, 0, 'Astor', -38.000826, -57.542858, 2),
+  (3, 1, 'Banco Provincia', -37.999319, -57.546547, 1),
+  (2, 1, 'Banco Nacion', -37.999671, -57.546848, 1),
+  (8, 1, 'atm', -37.998675, -57.552592, 0);
+
+2a)
+
+SELECT 
+  `store`.`id`,
+  `store`.`profile`,
+  `store`.`name`,
+  `store`.`lat`,
+  `store`.`lng`,
+  `store`.`id_rubro`
+FROM
+  `store`
+WHERE
+  `store`.`id`BETWEEN 100 and 2500;
+
+b) 
+
+SELECT 
+  `store`.`id`,
+  `store`.`profile`,
+  `store`.`name`,
+  `store`.`lat`,
+  `store`.`lng`,
+  `store`.`id_rubro`
+FROM
+  `store`
+WHERE
+  `store`.`profile` BETWEEN 1 and 3 AND `store`.`id` > 10000
+
+c)
+
+SELECT 
+  `store`.`id`,
+  `store`.`profile`,
+  `store`.`name`,
+  `store`.`lat`,
+  `store`.`lng`,
+  `store`.`id_rubro`
+FROM
+  `store`
+WHERE
+  `store`.`id_rubro` BETWEEN 1 and 2 AND `store`.`name` LIKE '%Banco%'
+
+d)
+
+SELECT MAX(`store`.`id`) AS mayor_id FROM store;
+
+e)
+
+SELECT MIN(`store`.`lat`) AS menor_latitud FROM store;
+
+3a)
+
+UPDATE `store`
+    SET   `store`.`name` ='Banco de la Nacion Argentina'
+    WHERE  `store`.`name` ='Banco Nacion';
+
+b)
+
+UPDATE `store`
+SET   `store`.`name` ='Musical Norte'
+WHERE  `store`.`name` ='AGB';
+
+c)
+
+UPDATE `store`
+SET   `store`.`lng` ='-57,000001'
+WHERE  `store`.`name` ='Astor';
+
+
+
+
