@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Administración de clientes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Administracion de Clientes</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>Direccion</th>
+          <th>Telefono</th>
+          <th>Mail</th>
+          <th>Edición</th>
+        </tr>
+      </thead>
+      <tbody id="datos">
+      </tbody>
+    </table>
+    <button type="button" id="btnAgregar" class="btn btn-success">Agregar</button>
+    <hr>
+    <button type="button" id="btnFinalizar" class="btn btn-success">Finalizar</button>
+  </div>
+
+
+  <div class="modal fade" id="ModalEditar" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="false">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="Codigo" name="Codigo">
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Nombre:</label>
+              <input type="text" id="Nombre" class="form-control" placeholder="">
+            </div>
+          </div>
+
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Direccion:</label>
+              <input type="text" id="Direccion" class="form-control" placeholder="">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Telefono:</label>
+              <input type="text" id="Telefono" class="form-control" placeholder="">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Mail:</label>
+              <input type="text" id="Mail" class="form-control" placeholder="">
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btnConfirmarAgregar" class="btn btn-success">Agregar</button>
+          <button type="button" id="btnModificar" class="btn btn-success">Modificar</button>
+          <button type="button" id="btnBorrar" class="btn btn-success">Borrar</button>
+          <button type="button" data-dismiss="modal" class="btn btn-success">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ModalConfirmarCancelar -->
+  <div class="modal fade" id="ModalConfirmarBorrar" tabindex="-1" role="dialog">
+    <div class="modal-dialog" style="max-width: 600px" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Realmente quiere borrarlo?</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btnConfirmarBorrado" class="btn btn-success">Confirmar</button>
+          <button type="button" data-dismiss="modal" class="btn btn-success">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      var cliente;
+
+      MostrarClientes();
+
+      //Boton que vuelve a la página principal
+      $('#btnFinalizar').click(function () {
+        window.location = '../index.php';
+      });
+
+      //Boton que muestra el diálogo de agregar
+      $('#btnAgregar').click(function () {
+        LimpiarFormulario();
+        $('#btnConfirmarAgregar').show();
+        $('#btnModificar').hide();
+        $('#btnBorrar').hide();
+        $("#ModalEditar").modal();
+      });
+
+      $('#btnConfirmarAgregar').click(function () {
+        RecolectarDatosFormulario();
+        if (!EntradaFormularioCorrecto())
+          return;
+        $("#ModalEditar").modal('hide');
+        EnviarInformacion("agregar");
+      });
+
+      $('#btnBorrar').click(function () {
+        $("#ModalEditar").modal('hide');
+        $("#ModalConfirmarBorrar").modal();
+      });
+
+      $('#btnConfirmarBorrado').click(function () {
+        $("#ModalConfirmarBorrar").modal('hide');
+        RecolectarDatosFormulario();
+        $("#ModalEditar").modal('hide');
+        EnviarInformacion("borrar");
+      });
+
+
+      $('#btnModificar').click(function () {
+        RecolectarDatosFormulario();
+        if (!EntradaFormularioCorrecto())
+          return;
+        $("#ModalEditar").modal('hide');
+        EnviarInformacion("modificar");
+      });
+      //******************************************************* 
+
+
+      function MostrarClientes() {
+        $.ajax({
+          type: 'GET',
+          url: 'procesar.php?accion=listar',
+          success: function (clientes) {
+            let filas = '';
+            for (let cliente of clientes) {
+              filas += '<tr><td>' + cliente.codigo + '</td><td>' + cliente.nombre + '</td><td>' + cliente.telefono + '</td><td>' + cliente.mail + '</td><td>' + cliente.direccion + '</td>';
+              filas += '<td><a class="btn btn-primary botoneditar" role="button" href="#" data-codigo="' + cliente.codigo + '">Edita?</a> </td></tr>';
+            }
+            $('#datos').html(filas);
+            //Boton que muestra el diálogo de modificar y borrar
+            $('.botoneditar').click(function () {
+              $('#Codigo').val($(this).get(0).dataset.codigo);
+              RecolectarDatosFormulario();
+              
+              RecuperarCliente("recuperar");
+              $('#btnConfirmarAgregar').prop("disabled", true);
+              $('#btnConfirmarAgregar').hide();
+              $('#btnModificar').show();
+              $('#btnBorrar').show();
+              $("#ModalEditar").modal();
+            });
+
+          },
+          error: function () {
+            alert("Hay un error ..");
+          }
+        });
+      }
+
+
+      //Funciones AJAX para enviar y recuperar datos del servidor
+      //******************************************************* 
+      function EnviarInformacion(accion) {
+        $.ajax({
+          type: 'POST',
+          url: 'procesar.php?accion=' + accion,
+          data: cliente,
+          success: function (msg) {
+            MostrarClientes();
+          },
+          error: function () {
+            alert("Hay un error ..");
+          }
+        });
+      }
+
+      function RecuperarCliente(accion) {
+        $.ajax({
+          type: 'POST',
+          url: 'procesar.php?accion=' + accion,
+          data: cliente,
+          success: function (datos) {
+            $('#Nombre').val(datos[0]['nombre']);
+            $('#Telefono').val(datos[0]['telefono']);
+            $('#Mail').val(datos[0]['mail']);
+            $('#Direccion').val(datos[0]['direccion']);
+          },
+          error: function () {
+            alert("Hay un error si..");
+          }
+        });
+      }
+      //******************************************************* 
+
+      function RecolectarDatosFormulario() {
+        cliente = {
+          codigo: $('#Codigo').val(),
+          nombre: $('#Nombre').val(),
+          mail: $('#Mail').val(),
+          direccion: $('#Direccion').val(),
+          telefono: $('#Telefono').val()
+        };
+      }
+
+      function LimpiarFormulario() {
+        $('#Codigo').val('');
+        $('#Nombre').val('');
+        $('#Telefono').val('');
+        $('#Mail').val('');
+        $('#Direccion').val('');
+      }
+
+      function EntradaFormularioCorrecto() {
+        if (cliente['nombre'] == '') {
+          alert("No Puede estar vacío el nombre");
+          return false;
+        }
+        return true;
+      }
+
+    });
+
+
+  </script>
+
+</body>
+
+</html>
