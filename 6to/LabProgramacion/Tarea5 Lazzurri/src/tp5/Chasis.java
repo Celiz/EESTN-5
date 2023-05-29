@@ -7,7 +7,7 @@ public class Chasis {
 	public Chasis(String nChasis, double peso) {
 		super();
 		this.nChasis = nChasis;
-		Peso = peso;
+		this.Peso = peso;
 	}
 
 	public String getnChasis() {
