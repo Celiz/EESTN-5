@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js"></script>
+    <title>TEXT TO CESAR</title>
+</head>
+<body>
+    <form id="cifradoForm">
+    <h1 id="title">Cifrado César</h1>
+        <label id="text" for="texto">Texto a cifrar:</label>
+        <p><input type="text" name="texto" id="texto" class="input" required></p>
+        <label id="key" for="desplazamiento">Desplazamiento:</label>
+        <p><input type="number" name="desplazamiento" id="desplazamiento" class="input" required></p>
+        <button type="button" id="cifrar" class="ui-btn">
+            <span>
+              Cifrar 
+            </span>
+          </button>
+          <button type="button" id="descifrar" class="ui-btn">
+            <span>
+              Descifrar 
+            </span>
+          </button>
+      <h2 id="cifradoFinal">Texto cifrado/descifrado:</h2>
+      <p id="resultado"></p>
+    </form>
+
+</body>
+</html>
