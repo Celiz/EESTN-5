@@ -1,0 +1,11 @@
+#ayuda {
+    color: #aa0;
+    background-color: #ff0;
+    position: absolute;
+    text-align: center;
+    left: 40px;
+    top: 30px;
+    width: 100px;
+    height: 40px;
+    display: none;
+}

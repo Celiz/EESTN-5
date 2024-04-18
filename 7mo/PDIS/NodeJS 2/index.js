@@ -95,6 +95,3 @@ function traducirAlIdiomaP(frase) {
 }
 
 console.log('Servidor web iniciado')
-
-
-
