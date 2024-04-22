@@ -1,0 +1,10 @@
+#recuadro {
+    color: #aa0;
+    background-color: #ff0;
+    position: absolute;
+    text-align: center;
+    left: 40px;
+    top: 30px;
+    width: 800px;
+    height: 70px;
+}

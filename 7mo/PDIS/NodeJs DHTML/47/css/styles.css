@@ -1,0 +1,13 @@
+#recuadro {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 30px;
+    font-family: Courier;
+    font-size: 12px;
+    background-color: #ffffcc;
+    border-width: 1px;
+    border-style: dotted;
+    border-color: #ffaa00;
+    padding: 20px;
+}
