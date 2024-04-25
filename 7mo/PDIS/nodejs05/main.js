@@ -4,7 +4,6 @@
     let count = 0;
     
     while (count < maxSignals) {
-        // Generate a random signal between 0 and 360
         signal = Math.floor(Math.random() * 361);
         
         if (signal >= 0) {
