@@ -1,5 +1,4 @@
-// Function to get the signals
-function getSignals(maxSignals) {
+ function getSignals(maxSignals) {
     const signals = [];
     let signal = 0;
     let count = 0;
@@ -17,7 +16,7 @@ function getSignals(maxSignals) {
     return signals;
 }
 
-// Function to normalize signals and find the corresponding quadrant
+
 function getQuadrantSequence(signals) {
     const quadrants = {
         0: 'N',
@@ -36,7 +35,6 @@ function getQuadrantSequence(signals) {
     return sequence.join("");
 }
 
-// Function to find the number of complete cycles
 function getCompleteCycles(sequence) {
     const cycles = sequence.match(/(NESO|OSEN|ESON|SENO|SONE|ENOS|ONES|NOSE)/g);
 
@@ -89,5 +87,5 @@ function main() {
 
     
 }
-// Call the main function
+
 main();
