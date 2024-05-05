@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de las señales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .resultados {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resultados de las señales</h1>
+
+    <div class="resultados">
+        <h2>Secuencia de cuadrantes:</h2>
+        <p id="secuencia"></p>
+
+        <h2>Ciclos completos:</h2>
+        <p id="ciclos"></p>
+
+        <h2>Porcentaje de ocurrencias:</h2>
+        <p id="porcentaje"></p>
+    </div>
+
+    <script>
+       function getSeniales() {
+    let seniales = [];
+    while (true) {
+        let signal = Math.floor(Math.random() * 360);
+        if (signal < 0) break;
+        seniales.push(signal);
+    }
+    return seniales;
+}
+
+function obtenerCuadrante(grado) {
+    if (grado >= 0 && grado < 90) return 'N';
+    else if (grado >= 90 && grado < 180) return 'E';
+    else if (grado >= 180 && grado < 270) return 'S';
+    else return 'O';
+}
+
+function obtenerSecuenciaCuadrantes(seniales) {
+    let secuencia = '';
+    seniales.forEach(grado => {
+        secuencia += obtenerCuadrante(grado);
+    });
+    return secuencia;
+}
+
+function obtenerCiclosCompletos(secuencia) {
+    let ciclos = (secuencia.match(/NESO|ESON|SONE|ONES/g) || []).length;
+    return ciclos;
+}
+
+function obtenerPorcentajeCuadrante(secuencia, cuadrante) {
+    let totalCuadrantes = secuencia.length / 4;
+    let ocurrenciasCuadrante = (secuencia.match(new RegExp(cuadrante, 'g')) || []).length;
+    let porcentaje = (ocurrenciasCuadrante / totalCuadrantes) * 100;
+    return porcentaje.toFixed(2);
+}
+
+        function main() {
+            let seniales = getSeniales();
+            let secuencia = obtenerSecuenciaCuadrantes(seniales);
+            document.getElementById('secuencia').innerText = secuencia;
+
+            let ciclosCompletos = obtenerCiclosCompletos(secuencia);
+            document.getElementById('ciclos').innerText = ciclosCompletos;
+
+            let porcentaje = `
+                N: ${obtenerPorcentajeCuadrante(secuencia, 'N')}%
+                S: ${obtenerPorcentajeCuadrante(secuencia, 'S')}%
+                E: ${obtenerPorcentajeCuadrante(secuencia, 'E')}%
+                O: ${obtenerPorcentajeCuadrante(secuencia, 'O')}%
+            `;
+            document.getElementById('porcentaje').innerText = porcentaje;
+        }
+
+        // Ejecutar el main al cargar la página
+        main();
+    </script>
+</body>
+</html>
