@@ -40,17 +40,17 @@ CREATE TABLE `peliculas` (
 --
 
 INSERT INTO `peliculas` (`idpeliculas`, `titulo`, `genero`, `director`, `duracion`) VALUES
-(1, 'El Padrino', 'Drama', 'Francis Ford Coppola', 175),
-(2, 'Casablanca', 'Romance', 'Michael Curtiz', 104),
-(3, 'El Caballero Oscuro', 'Thriller', 'Christopher Nolan', 165),
-(4, 'Pulp Fiction', 'Crimen', 'Quentin Tarantino', 154),
-(5, '12 Angry Men', 'Drama', 'Sidney Lumet', 96),
-(6, 'La Lista de Schindler', 'Drama histórico', 'Steven Spielberg', 156),
-(7, 'Star Wars: Episodio IV - Una nueva esperanza', 'Ciencia Ficción', 'George Lucas', 121),
-(8, 'El silencio de los corderos', 'Thriller psicológico', 'Jonathan Demme', 118),
-(9, 'Forrest Gump', 'Comedia dramática', 'Robert Zemeckis', 142),
-(10, 'Cadena perpetua', 'Drama', 'Frank Darabont', 142),
-(11, 'Akira', 'Ciencia Ficción, Animación', 'Katsuhiro Otomo', 120);
+(1, 'Jurassic Park', 'Ciencia Ficción', 'Steven Spielberg', 127),
+(2, 'E.T. El Extraterrestre', 'Ciencia Ficción', 'Steven Spielberg', 115),
+(3, 'La Lista de Schindler', 'Drama histórico', 'Steven Spielberg', 156),
+(4, 'El Padrino', 'Drama', 'Francis Ford Coppola', 175),
+(5, 'Casablanca', 'Romance', 'Michael Curtiz', 104),
+(6, 'El Caballero Oscuro', 'Thriller', 'Christopher Nolan', 165),
+(7, 'Pulp Fiction', 'Crimen', 'Quentin Tarantino', 154),
+(8, '12 Angry Men', 'Drama', 'Sidney Lumet', 96),
+(9, 'El Señor de los Anillos: La Comunidad del Anillo', 'Fantasía', 'Peter Jackson', 178),
+(10, 'La La Land', 'Romance', 'Damien Chazelle', 88);
+
 
 --
 -- Índices para tablas volcadas
