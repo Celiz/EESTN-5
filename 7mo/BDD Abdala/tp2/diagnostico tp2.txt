@@ -1,0 +1,31 @@
+
+
+a:
+Crear una tabla llamada MARCAS con los siguientes campos: IdMarca (SMALLINT NOT NULL con valor predeterminado 1), NombreMarca (CHAR(10) NOT NULL) y NombreCiudad (CHAR(60) NOT NULL). Establecer IdMarca como clave primaria.
+
+b:
+Crear una tabla llamada COCHES con los siguientes campos: codcoche (SMALLINT NOT NULL), nombre (CHAR(15) NOT NULL) y modelo (CHAR(10)). Establecer codcoche como clave primaria.
+
+c:
+Crear una tabla llamada MARCO con los siguientes campos: IdMarca (SMALLINT NOT NULL) y codcoche (SMALLINT NOT NULL). Establecer una clave primaria compuesta por IdMarca y codcoche. Agregar claves foráneas que referencien IdMarca a la tabla MARCAS y codcoche a la tabla COCHES.
+
+d:
+Insertar los siguientes registros en la tabla MARCAS: (1, 'vw', 'Mar del Plata'), (2, 'renault', 'Rosario'), (3, 'fiat', 'Cordoba') y (4, 'ford', 'Neuquen').
+
+e:
+Seleccionar todos los campos de la tabla MARCAS.
+
+f:
+Seleccionar los campos nombre y ciudad de la tabla MARCAS.
+
+g:
+Seleccionar los campos nombre y ciudad de la tabla MARCAS donde IdMarca es igual a 2.
+
+h:
+Seleccionar los campos NombreMarca y ciudad de la tabla MARCAS donde ciudad es igual a 'Neuquen'.
+
+i:
+Seleccionar los campos nombre y ciudad de la tabla MARCAS donde ciudad comienza con 'S'.
+
+j:
+Actualizar el campo ciudad a 'Nuequen' en la tabla MARCAS donde ciudad es igual a 'Jujuy'.
