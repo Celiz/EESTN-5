@@ -1,0 +1,7 @@
+=== REGISTRO DE NOTAS DE ESTUDIANTES ===
+Nombre: Juan P�rez | Promedio: 10
+Nombre: Mar�a L�pez | Promedio: 8.2
+Nombre: Carlos Ruiz | Promedio: 5.8
+Nombre: the grefg | Promedio: 2.0
+Nombre: 1 | Promedio: 5.0
+Nombre:  | Promedio: 1.0

@@ -25,9 +25,8 @@ class Ahorcado {
 
     async initGame() {
         try {
-            const englishWord = await this.getEnglishWord();
-            const spanishWord = await this.translateWord(englishWord);
-            this.word = spanishWord.toUpperCase();
+            const englishWord = await this.getWord();
+            this.word = englishWord.toUpperCase();
             this.updateWordDisplay();
             this.updateHangmanImage();
         } catch (error) {
@@ -36,25 +35,13 @@ class Ahorcado {
         }
     }
 
-    async getEnglishWord() {
-        const response = await fetch('https://random-word-api.herokuapp.com/word');
+    async getWord() {
+        const response = await fetch('https://random-word-api.herokuapp.com/word?lang=es');
         if (!response.ok) {
             throw new Error('Error al obtener la palabra en inglés');
         }
         const data = await response.json();
         return data[0];
-    }
-
-    async translateWord(word) {
-
-        const authKey = "a4d6d4a0-ec26-411f-aad0-f2d59213ce48:fx";
-        const translator = new deepl.Translator(authKey);
-        (async () => {
-            const result = await translator.translateText(word, null, 'es');
-            console.log(result.text); 
-        })();
-
-
     }
 
     WordDisplay() {
